@@ -21,7 +21,8 @@ def scan_for_arguments(git_comment):
   argumentList = sys.argv[1:]
   options      = "c:v" 
   long_options = ["comment","version"]
-  version      = '1.3'
+  version      = '1.4'
+  input(">>> Beginning command line argument parsing.")
   try:
     arguments, values = getopt.getopt(argumentList, options, long_options)
     for currentArgument, currentValue in arguments:
@@ -50,9 +51,9 @@ def main():
 #  if len(sys.argv) == 1:
 #    run_git_commands()
 #  run_git_commands(scan_for_arguments(""))
-  comment=scan_for_arguments("")
-  run_git_commands(comment)
-#  run_git_commands(scan_for_arguments(""))
+#  comment=scan_for_arguments("")
+#  run_git_commands(comment)
+  run_git_commands(scan_for_arguments(""))
 #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 if __name__ == "__main__":
     main()
