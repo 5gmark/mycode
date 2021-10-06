@@ -35,6 +35,7 @@ def scan_for_arguments(git_comment):
   sys.exit()
 #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 def run_git_commands(git_comment):
+  input(">>> Beginning git commands.")
   if len(sys.argv) == 1 or git_comment:
     if bool(git_comment):
       commit_message    = git_comment
