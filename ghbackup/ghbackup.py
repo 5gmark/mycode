@@ -49,7 +49,10 @@ def main():
 #  scan_for_arguments()
 #  if len(sys.argv) == 1:
 #    run_git_commands()
-  run_git_commands(scan_for_arguments(""))
+#  run_git_commands(scan_for_arguments(""))
+  comment=scan_for_arguments("")
+  run_git_commands(comment)
+#  run_git_commands(scan_for_arguments(""))
 #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 if __name__ == "__main__":
     main()
