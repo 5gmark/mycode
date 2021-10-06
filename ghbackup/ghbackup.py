@@ -21,7 +21,7 @@ def scan_for_arguments(git_comment):
   argumentList = sys.argv[1:]
   options      = "c:v" 
   long_options = ["comment","version"]
-  version      = '1.4'
+  version      = '1.5'
   input(">>> Beginning command line argument parsing.")
   try:
     input(">>> Press <Enter> to set <arguments> and <values>.")
@@ -49,10 +49,18 @@ def run_git_commands(git_comment):
     else:
       commit_message    = input('Commit Comment: ')
 #  commit_message=input("Commit Comment: ")
-  os.chdir("/home/student/mycode")
-  os.system("git add *")
-  os.system('git commit -m "'+ commit_message + '"')
-  os.system("git push origin")
+  working_directory="/home/student/mycode"
+  git_add="git add *"
+  git_commit='git commit -m "'+ commit_message + '"'
+  git_push="git push origin"
+  os.chdir(working_directory)
+  print(">>> Working directory set:",working_directory)
+  os.system(git_add)
+  print(">>> git command processed:",git_add)
+  os.system(git_commit)
+  print(">>> git command processed:",git_commit)
+  os.system(git_push)
+  print(">>> git command processed:",git_push)
 #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 
 def main():
 #  scan_for_arguments()
