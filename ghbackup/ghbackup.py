@@ -24,8 +24,15 @@ def scan_for_arguments(git_comment):
   version      = '1.4'
   input(">>> Beginning command line argument parsing.")
   try:
+    input(">>> Press <Enter> to set <arguments> and <values>.")
     arguments, values = getopt.getopt(argumentList, options, long_options)
+    input(">>> <arguments> and <values> set.")
+    print("<arguments>:",arguments)
+    print("<values>:",values)
+    input(">>> Press <Enter> to set <curretArgument> and <currentValue>.")
     for currentArgument, currentValue in arguments:
+      print("<currentArgument>:",currentArgument)
+      print("<currentValue>:",currentValue)
       if currentArgument in ("-c", "--comment"):
         return currentValue
       elif currentArgument in ("-v", "--version"):
