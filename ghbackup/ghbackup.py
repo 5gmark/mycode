@@ -59,8 +59,9 @@ def scan_for_arguments(git_comment,debug_status):
     print("Error 101")
   sys.exit()
 #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-def run_git_commands(git_comment):
-  input(">>> Beginning git commands.")
+def run_git_commands(git_comment,debug_status):
+  if debug_status:
+    input(">>> Beginning git commands.")
   if len(sys.argv) == 1 or git_comment:
     if bool(git_comment):
       commit_message    = git_comment
@@ -72,13 +73,17 @@ def run_git_commands(git_comment):
   git_commit='git commit -m "'+ commit_message + '"'
   git_push="git push origin"
   os.chdir(working_directory)
-  print(">>> Working directory set:",working_directory)
+  if debug_status:
+    print(">>> Working directory set:",working_directory)
   os.system(git_add)
-  print(">>> git command processed:",git_add)
+  if debug_status:
+    print(">>> git command processed:",git_add)
   os.system(git_commit)
-  print(">>> git command processed:",git_commit)
+  if debug_status:
+    print(">>> git command processed:",git_commit)
   os.system(git_push)
-  print(">>> git command processed:",git_push)
+  if debug_status:
+    print(">>> git command processed:",git_push)
 #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 
 def main():
 #  scan_for_arguments()
@@ -88,7 +93,7 @@ def main():
 #  comment=scan_for_arguments("")
 #  run_git_commands(comment)
   debug=debug_mode_status_check("")
-  run_git_commands(scan_for_arguments("",debug))
+  run_git_commands(scan_for_arguments("",debug),debug)
 #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 if __name__ == "__main__":
     main()
