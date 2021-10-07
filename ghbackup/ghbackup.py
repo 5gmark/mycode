@@ -70,22 +70,22 @@ def run_git_commands(git_comment,debug_status):
     else:
       commit_message    = input('Commit Comment: ')
 #  commit_message=input("Commit Comment: ")
-  working_directory="/home/student/mycode"
-  git_add="git add *"
-  git_commit='git commit -m "'+ commit_message + '"'
-  git_push="git push origin"
-  os.chdir(working_directory)
-  if debug_status:
-    print(">>> Working directory set:",working_directory)
-  os.system(git_add)
-  if debug_status:
-    print(">>> git command processed:",git_add)
-  os.system(git_commit)
-  if debug_status:
-    print(">>> git command processed:",git_commit)
-  os.system(git_push)
-  if debug_status:
-    print(">>> git command processed:",git_push)
+    working_directory="/home/student/mycode"
+    git_add="git add *"
+    git_commit='git commit -m "'+ commit_message + '"'
+    git_push="git push origin"
+    os.chdir(working_directory)
+    if debug_status:
+      print(">>> Working directory set:",working_directory)
+    os.system(git_add)
+    if debug_status:
+      print(">>> git command processed:",git_add)
+    os.system(git_commit)
+    if debug_status:
+      print(">>> git command processed:",git_commit)
+    os.system(git_push)
+    if debug_status:
+      print(">>> git command processed:",git_push)
 #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 
 def main():
 #  scan_for_arguments()
