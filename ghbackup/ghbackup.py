@@ -57,12 +57,12 @@ def scan_for_arguments(git_comment,debug_status):
         print (os.path.basename(sys.argv[0]), version)
   except:
     print("Error 101")
-  sys.exit()
+#  sys.exit()
 #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 def run_git_commands(git_comment,debug_status):
   if debug_status:
     input(">>> Beginning git commands.")
-  if len(sys.argv) == 1 or git_comment:
+  if len(sys.argv) == 1 or git_comment or sys.argv[1] == "-d":
     if bool(git_comment):
       commit_message    = git_comment
     else:
@@ -93,7 +93,9 @@ def main():
 #  comment=scan_for_arguments("")
 #  run_git_commands(comment)
   debug=debug_mode_status_check("")
+  print("1")
   run_git_commands(scan_for_arguments("",debug),debug)
+  print("2")
 #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 if __name__ == "__main__":
     main()
