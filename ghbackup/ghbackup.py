@@ -64,7 +64,7 @@ def run_git_commands(git_comment,debug_status):
     input(">>> Beginning git commands.")
   if len(sys.argv) == 1 or \
      git_comment or        \
-     (len(sys.argv) == 2 and sys.argv[1] == "-d"):
+     (len(sys.argv) == 2 and sys.argv[1] in ["-d","--debug"]):
     if bool(git_comment):
       commit_message    = git_comment
     else:
