@@ -17,24 +17,42 @@ import getopt        # C-style parser for command line options.
 import os            # Operating system dependent functionality.
 import sys           # System-specific parameters and functions.
 #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 
-def scan_for_arguments(git_comment):
+def debug_mode_status_check(debug):
+    if any(argument in ['-d','--debug'] for argument in sys.argv):
+        print(">>> Debug Mode: On")
+        return True
+#<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 
+def scan_for_arguments(git_comment,debug_status):
   argumentList = sys.argv[1:]
-  options      = "c:v" 
-  long_options = ["comment","version"]
+  options      = "c:dlv" 
+  long_options = ["comment","debug","line-count","version"]
   version      = '1.5'
-  input(">>> Beginning command line argument parsing.")
+  if debug_status:
+    input(">>> Beginning command line argument parsing.")
   try:
-    input(">>> Press <Enter> to set <arguments> and <values>.")
+    if debug_status:
+      input(">>> Press <Enter> to set <arguments> and <values>.")
     arguments, values = getopt.getopt(argumentList, options, long_options)
-    input(">>> <arguments> and <values> set.")
-    print("<arguments>:",arguments)
-    print("<values>:",values)
-    input(">>> Press <Enter> to set <curretArgument> and <currentValue>.")
+    if debug_status:
+      input(">>> <arguments> and <values> set.")
+      print(">>><arguments>:",arguments)
+      print(">>><values>:",values)
+      input(">>> Press <Enter> to set <curretArgument> and <currentValue>.")
     for currentArgument, currentValue in arguments:
-      print("<currentArgument>:",currentArgument)
-      print("<currentValue>:",currentValue)
+      if debug_status:
+        print(">>><currentArgument>:",currentArgument)
+        print(">>><currentValue>:",currentValue)
       if currentArgument in ("-c", "--comment"):
         return currentValue
+      elif currentArgument in ("-l", "--line-count"):
+        print("This file:",os.path.basename(sys.argv[0]))
+        this_file=open(os.path.basename(sys.argv[0]),"r")
+        number_of_lines=0
+        for line in this_file:
+          if line != "\n":
+            number_of_lines += 1
+        this_file.close()
+        print("Number of Lines:",number_of_lines)
       elif currentArgument in ("-v", "--version"):
         print (os.path.basename(sys.argv[0]), version)
   except:
@@ -69,7 +87,8 @@ def main():
 #  run_git_commands(scan_for_arguments(""))
 #  comment=scan_for_arguments("")
 #  run_git_commands(comment)
-  run_git_commands(scan_for_arguments(""))
+  debug=debug_mode_status_check("")
+  run_git_commands(scan_for_arguments("",debug))
 #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 if __name__ == "__main__":
     main()
